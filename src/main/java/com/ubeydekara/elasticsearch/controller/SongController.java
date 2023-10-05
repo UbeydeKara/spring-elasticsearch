@@ -5,7 +5,6 @@ import com.ubeydekara.elasticsearch.service.SongService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -13,6 +12,11 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class SongController {
     private final SongService songService;
+
+    @GetMapping
+    public Iterable<Song> findAll() {
+        return songService.findAll();
+    }
 
     @GetMapping("/suggest/{name}")
     public Set<String> suggestByName(@PathVariable String name) {

@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 public class SongService {
     private final SongRepository songRepository;
 
+    public Iterable<Song> findAll() {
+        return songRepository.findAll();
+    }
+
     public Set<String> suggestByName(String name) {
         return songRepository.suggestSongName(name).stream().map(Song::getName).collect(Collectors.toSet());
     }

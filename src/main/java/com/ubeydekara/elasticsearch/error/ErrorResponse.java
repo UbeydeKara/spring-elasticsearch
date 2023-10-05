@@ -1,15 +1,15 @@
 package com.ubeydekara.elasticsearch.error;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
-@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record ErrorResponse<T>(
         Integer status,
         Date timestamp,
         String message,
         String path,
-        HashMap<String, T> errors
+        Map<String, T> errors
 ) {}
